@@ -98,6 +98,8 @@ Após os contêineres serem iniciados (pode levar alguns minutos na primeira vez
 
 * **API Backend:** ⚙️ <http://localhost:3000>
 
+* **API Backend Swagger:** ⚙️ <http://localhost:3000/api>
+
 ## ✅ Testes
 
 Todos os testes unitários e de integração foram desenvolvidos usando **Vitest** e estão passando com sucesso! Isso garante a confiabilidade e o correto funcionamento das principais funcionalidades do aplicativo.
@@ -105,6 +107,7 @@ Todos os testes unitários e de integração foram desenvolvidos usando **Vitest
 Para executar os testes do projeto, navegue até as pastas `frontend` ou `backend` (ou o local dos seus arquivos de teste) e execute o comando:
 
 ```
+npm install
 npm run test
 
 ```
