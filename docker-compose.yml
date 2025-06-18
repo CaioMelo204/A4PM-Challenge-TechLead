@@ -1,0 +1,63 @@
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: mysql_recipes
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: recipes
+      MYSQL_USER: app
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - recipes:/var/lib/mysql
+    networks:
+      - a4pm
+    healthcheck:
+      test: [ "CMD-SHELL", 'mysqladmin ping' ]
+      interval: 10s
+      timeout: 2s
+      retries: 10
+
+  frontend:
+    build:
+      context: frontend
+      target: prod
+      args:
+        - VITE_API_URL=/api
+    container_name: frontend
+    ports:
+      - "5000:80"
+    networks:
+      - a4pm
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: mysql_db
+      DATABASE_PORT: 3306
+      DATABASE_PASSWORD: root
+      DATABASE_NAME: teste_receitas_rg_sistemas
+      DATABASE_USERNAME: root
+      JWT_SECRET: secret
+      JWT_EXPIRE: 60m
+      NODE_ENV: dev
+    ports:
+      - "3000:3000"
+    networks:
+      - a4pm
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+
+volumes:
+  recipes:
+
+networks:
+  a4pm:
+    driver: bridge
