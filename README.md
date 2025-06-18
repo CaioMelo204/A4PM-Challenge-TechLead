@@ -1,98 +1,118 @@
-🍲 Aplicativo de Receitas 🚀
+# 🍲 Aplicativo de Receitas 🚀
+
 Bem-vindo(a) ao Aplicativo de Receitas, uma plataforma intuitiva para gerenciar e explorar suas receitas favoritas! Este projeto é construído com um frontend interativo e uma API de backend robusta, orquestrados por Docker para um ambiente de desenvolvimento e implantação simplificado.
 
-✨ Visão Geral
+## ✨ Visão Geral
+
 Este aplicativo permite:
 
-Visualizar uma lista de receitas.
+* Visualizar uma lista de receitas.
 
-Criar novas receitas com detalhes como ingredientes, modo de preparo, tempo e porções.
+* Criar novas receitas com detalhes como ingredientes, modo de preparo, tempo e porções.
 
-Editar e deletar receitas existentes.
+* Editar e deletar receitas existentes.
 
-Pesquisar e filtrar receitas por nome, categoria e outros critérios.
+* Pesquisar e filtrar receitas por nome, categoria e outros critérios.
 
-Autenticação de usuários para acesso seguro.
+* Autenticação de usuários para acesso seguro.
 
-💻 Tecnologias Utilizadas
-Frontend:
+## 💻 Tecnologias Utilizadas
 
-Vue.js 3 (com Composition API e Script Setup)
+**Frontend:**
 
-Pinia (Gerenciamento de Estado)
+* Vue.js 3 (com Composition API e Script Setup)
 
-Vue Router (Navegação)
+* Pinia (Gerenciamento de Estado)
 
-Axios (Requisições HTTP)
+* Vue Router (Navegação)
 
-HTML5, CSS3
+* Axios (Requisições HTTP)
 
-Backend:
+* HTML5, CSS3
 
-NestJS (com Express.js)
+**Backend:**
 
-MySQL (Banco de Dados)
+* NestJS (com Express.js)
 
-JWT (Autenticação)
+* MySQL (Banco de Dados)
 
-TypeORM (ORM)
+* JWT (Autenticação)
 
-Infraestrutura/Orquestração:
+* TypeORM (ORM)
 
-Docker
+* RestFull 
 
-Docker Compose
+**Infraestrutura/Orquestração:**
 
-🚀 Como Iniciar o Projeto
+* Docker
+
+* Docker Compose
+
+## 🚀 Como Iniciar o Projeto
+
 Para colocar o aplicativo e a API em funcionamento localmente, siga estes passos simples usando Docker Compose.
 
-Pré-requisitos
-Certifique-se de ter o Docker Desktop (que inclui Docker Engine e Docker Compose) instalado em sua máquina.
+### Pré-requisitos
 
-Passos de Inicialização
-Clone o Repositório:
+Certifique-se de ter o [Docker Desktop](https://www.docker.com/products/docker-desktop/) (que inclui Docker Engine e Docker Compose) instalado em sua máquina.
 
-git clone [<URL_DO_SEU_REPOSITORIO>](https://github.com/CaioMelo204/A4PM-Challenge-TechLead)
-cd <pasta-do-seu-projeto>
+### Passos de Inicialização
 
-Crie os arquivos .env (se necessário):
+1. **Clone o Repositório:**
 
-Para o backend: Certifique-se de que a pasta backend/ contenha um arquivo de configuração de ambiente se sua aplicação backend exigir (ex: .env com configurações do banco de dados). As variáveis DATABASE_HOST, DATABASE_PORT, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_USERNAME, JWT_SECRET, JWT_EXPIRE, NODE_ENV são configuradas diretamente no docker-compose.yml.
+   ```
+   git clone [<URL_DO_SEU_REPOSITORIO>](https://github.com/CaioMelo204/A4PM-Challenge-TechLead)
+   cd <pasta-do-seu-projeto>
+   
+   ```
 
-Para o frontend: O VITE_API_URL já é passado via docker-compose.yml. Se precisar de outras variáveis de ambiente, configure seu projeto frontend para lê-las.
+2. **Crie os arquivos `.env` (se necessário):**
 
-Inicie os Serviços com Docker Compose:
-Navegue até a pasta raiz do projeto (onde está o docker-compose.yml) no seu terminal e execute:
+   * Para o **backend**: Certifique-se de que a pasta `backend/` contenha um arquivo de configuração de ambiente se sua aplicação backend exigir (ex: `.env` com configurações do banco de dados). As variáveis `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_PASSWORD`, `DATABASE_NAME`, `DATABASE_USERNAME`, `JWT_SECRET`, `JWT_EXPIRE`, `NODE_ENV` são configuradas diretamente no `docker-compose.yml`.
 
-docker compose up --build
+   * Para o **frontend**: O `VITE_API_URL` já é passado via `docker-compose.yml`. Se precisar de outras variáveis de ambiente, configure seu projeto frontend para lê-las.
 
-Este comando irá:
+3. **Inicie os Serviços com Docker Compose:**
+   Navegue até a pasta raiz do projeto (onde está o `docker-compose.yml`) no seu terminal e execute:
 
-Construir as imagens Docker para o frontend e o backend (se ainda não existirem ou se houver mudanças).
+   ```
+   docker compose up --build
+   
+   ```
 
-Criar e iniciar os contêineres para o banco de dados MySQL, backend e frontend.
+   Este comando irá:
 
-Configurar a rede a4pm para que os serviços possam se comunicar internamente.
+   * Construir as imagens Docker para o frontend e o backend (se ainda não existirem ou se houver mudanças).
 
-Executar o script de inicialização do banco de dados (se houver um na pasta init/).
+   * Criar e iniciar os contêineres para o banco de dados MySQL, backend e frontend.
 
-Acessando a Aplicação
+   * Configurar a rede `a4pm` para que os serviços possam se comunicar internamente.
+
+   * Executar o script de inicialização do banco de dados (se houver um na pasta `init/`).
+
+### Acessando a Aplicação
+
 Após os contêineres serem iniciados (pode levar alguns minutos na primeira vez), você poderá acessar a aplicação e a API nos seguintes endereços:
 
-Aplicativo Frontend: 🌐 http://localhost:5000
+* **Aplicativo Frontend:** 🌐 <http://localhost:5000>
 
-API Backend: ⚙️ http://localhost:3000
+* **API Backend:** ⚙️ <http://localhost:3000>
 
-✅ Testes
-Todos os testes unitários e de integração foram desenvolvidos usando Vitest e estão passando com sucesso! Isso garante a confiabilidade e o correto funcionamento das principais funcionalidades do aplicativo.
+## ✅ Testes
 
-Para executar os testes do projeto, navegue até as pastas frontend ou backend (ou o local dos seus arquivos de teste) e execute o comando:
+Todos os testes unitários e de integração foram desenvolvidos usando **Vitest** e estão passando com sucesso! Isso garante a confiabilidade e o correto funcionamento das principais funcionalidades do aplicativo.
 
-npm test
-# ou pnpm test, yarn test, dependendo do seu gerenciador de pacotes
+Para executar os testes do projeto, navegue até as pastas `frontend` ou `backend` (ou o local dos seus arquivos de teste) e execute o comando:
 
-🤝 Contribuição
+```
+npm run test
+
+```
+
+## 🤝 Contribuição
+
 Contribuições são bem-vindas! Se você tiver sugestões, melhorias ou encontrar bugs, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-📄 Licença
-Este projeto está licenciado sob a licença MIT.
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT
