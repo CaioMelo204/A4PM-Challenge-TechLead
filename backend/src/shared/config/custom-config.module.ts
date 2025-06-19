@@ -14,6 +14,7 @@ import { IEnvConfigService } from './interface/env-config.service.interface';
           // process.env = { ...process.env, ...params };
           // return params;
           process.env = { ...process.env };
+
         },
       ],
     }),
