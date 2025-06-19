@@ -13,7 +13,7 @@ import { IEnvConfigService } from './interface/env-config.service.interface';
           // const params = await SSMConfigService.loadParams();
           // process.env = { ...process.env, ...params };
           // return params;
-          process.env = { ...process.env };
+          // process.env = { ...process.env };
 
         },
       ],
@@ -31,7 +31,9 @@ export class EnvConfigModule extends ConfigModule {
   static forRoot(options?: ConfigModuleOptions): Promise<DynamicModule> {
     return super.forRoot({
       ...options,
-      envFilePath: [`${process.cwd()}/.env.${process.env.STAGE || 'dev'}`],
+      envFilePath: process.env.NODE_ENV === 'test' ? '.env' : undefined,
+      ignoreEnvFile: process.env.NODE_ENV !== 'test',
+      isGlobal: true,
     });
   }
 }
